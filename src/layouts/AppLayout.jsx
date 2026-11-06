@@ -22,7 +22,7 @@ export default function AppLayout() {
               to="/app/dashboard"
               className="flex items-center gap-2.5 font-bold tracking-tight text-lg hover:opacity-90 transition-opacity"
             >
-              <img src={logo} alt="Workspace Logo" className="h-8 w-8 rounded-lg shadow-sm" />
+              <img src={logo} alt="Technology Leaders of the Future Logo" className="h-8 w-8 shrink-0" />
               <span className="hidden sm:inline">Workspace</span>
             </Link>
 

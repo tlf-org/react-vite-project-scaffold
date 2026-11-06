@@ -26,7 +26,7 @@ The project is structured with two decoupled layouts mimicking real-world produc
 1. **Public Layout (`/`)** — `src/layouts/PublicLayout.jsx`:
    - Designed for marketing, landing pages, and showcases.
    - Features the project logo (`src/assets/logo.svg`) and an **"Open App"** action button in the top-right corner.
-   - Hosts `src/pages/LandingPage.jsx` with the hero illustration (`src/assets/hero-illustration.svg`), an interactive "Hello World" card, a name update form, and a modal dialog.
+   - Hosts `src/pages/LandingPage.jsx` with the hero illustration (`src/assets/hero-illustration.svg`) and a direct **"Open App"** action button to enter the workspace.
 
 2. **App Layout (`/app/*`)** — `src/layouts/AppLayout.jsx`:
    - Designed for internal workspace and dashboard views.
@@ -170,7 +170,7 @@ npm run lint
 │   │   ├── PublicLayout.jsx# Landing page shell (Navbar with logo & "Open App" button)
 │   │   └── AppLayout.jsx   # Dashboard shell (Navbar with logo, Dashboard & Components tabs)
 │   ├── pages/
-│   │   ├── LandingPage.jsx   # Public landing page with hero graphic & Hello World card
+│   │   ├── LandingPage.jsx   # Public landing page with hero graphic & Open App CTA
 │   │   ├── DashboardPage.jsx # App overview with workspace banner & metric cards
 │   │   └── ComponentsPage.jsx# Interactive UI kit showcase (2-column grid + Assistant UI)
 │   ├── lib/

@@ -1,42 +1,12 @@
-import * as React from "react"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 import reactLogo from "@/assets/react.svg"
 import viteLogo from "@/assets/vite.svg"
 import heroIllustration from "@/assets/hero-illustration.svg"
 import { ArrowRight } from "lucide-react"
 
 export default function LandingPage() {
-  const [name, setName] = React.useState("")
-  const [submittedName, setSubmittedName] = React.useState("")
-  const [isDialogOpen, setIsDialogOpen] = React.useState(false)
-
-  const handleSave = (e) => {
-    e.preventDefault()
-    if (name.trim()) {
-      setSubmittedName(name.trim())
-    }
-  }
-
   return (
     <div className="w-full max-w-xl flex flex-col gap-6">
       <div className="text-center flex flex-col items-center gap-3">
@@ -85,79 +55,15 @@ export default function LandingPage() {
         />
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Welcome Panel</CardTitle>
-          <CardDescription>
-            Container card styled with shadcn design tokens.
-          </CardDescription>
-        </CardHeader>
-
-        <CardContent className="space-y-4">
-          <div className="rounded-lg border border-dashed border-border p-4 text-center bg-muted/30">
-            <span className="text-xl font-semibold tracking-wide text-primary">
-              Hello World
-            </span>
-            {submittedName && (
-              <p className="text-xs text-muted-foreground mt-1">
-                Welcome, <strong className="text-foreground">{submittedName}</strong>!
-              </p>
-            )}
-          </div>
-
-          <form onSubmit={handleSave} className="flex gap-2">
-            <Input
-              type="text"
-              placeholder="Type your name..."
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="flex-1"
-            />
-            <Button type="submit" variant="default">
-              Update
-            </Button>
-          </form>
-        </CardContent>
-
-        <CardFooter className="flex flex-wrap justify-between items-center gap-2">
-          <span className="text-xs text-muted-foreground">
-            Built with shadcn primitives
-          </span>
-
-          <div className="flex items-center gap-2">
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button variant="outline" size="sm">
-                  Open Dialog
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Dialog Modal</DialogTitle>
-                  <DialogDescription>
-                    This is a shadcn Dialog component powered by Radix UI.
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="py-2 text-sm text-muted-foreground">
-                  Hello World from inside the dialog window! You can easily place forms, confirmations, or details here.
-                </div>
-                <DialogFooter showCloseButton>
-                  <Button onClick={() => setIsDialogOpen(false)}>
-                    Got it
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-
-            <Button asChild size="sm">
-              <Link to="/app/dashboard" className="gap-1.5">
-                <span>Go to App</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </Button>
-          </div>
-        </CardFooter>
-      </Card>
+      {/* Primary Action */}
+      <div className="flex justify-center pt-2">
+        <Button asChild size="lg" className="gap-2 shadow-sm">
+          <Link to="/app/dashboard">
+            <span>Open App</span>
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </Button>
+      </div>
 
       <footer className="text-center text-xs text-muted-foreground">
         Ready for more shadcn components:{" "}

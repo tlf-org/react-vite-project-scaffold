@@ -1,6 +1,6 @@
 # React + Vite + Tailwind CSS + shadcn/ui Project Scaffold
 
-A modern, fast, and lightweight project scaffold configured with **React 19**, **Vite**, **Tailwind CSS v4**, and **shadcn/ui** components.
+A modern, fast, and production-ready project scaffold configured with **React 19**, **Vite**, **Tailwind CSS v4**, **shadcn/ui**, and **React Router**.
 
 Repository: [tlf-org/react-vite-project-scaffold](https://github.com/tlf-org/react-vite-project-scaffold)
 
@@ -10,10 +10,31 @@ Repository: [tlf-org/react-vite-project-scaffold](https://github.com/tlf-org/rea
 
 - **[React 19](https://react.dev/)** — The library for web and native user interfaces.
 - **[Vite](https://vite.dev/)** — Next-generation frontend tooling with lightning-fast HMR.
+- **[React Router DOM](https://reactrouter.com/)** — Declarative client-side routing and nested layouts.
 - **[Tailwind CSS v4](https://tailwindcss.com/)** — Modern utility-first CSS framework configured via `@tailwindcss/vite`.
 - **[shadcn/ui](https://ui.shadcn.com/)** — Reusable, accessible UI components built on Radix UI and styled with Tailwind CSS.
 - **[Lucide React](https://lucide.dev/)** — Beautiful, consistent icons.
 - **[ESLint](https://eslint.org/)** — Flat config linting for React hooks and refresh conventions.
+
+---
+
+## Layouts & Application Architecture
+
+The project is structured with two decoupled layouts mimicking real-world production web applications:
+
+1. **Public Layout (`/`)** — `src/layouts/PublicLayout.jsx`:
+   - Designed for marketing, landing pages, and showcases.
+   - Includes a public header with an **"Open App"** action button in the top-right corner.
+   - Hosts `src/pages/LandingPage.jsx` with the interactive "Hello World" Panel, name update form, and modal dialog.
+
+2. **App Layout (`/app/*`)** — `src/layouts/AppLayout.jsx`:
+   - Designed for internal workspace and dashboard views.
+   - Top navigation bar featuring active links:
+     - **Dashboard** (`/app/dashboard`) — `src/pages/DashboardPage.jsx`: metrics, overview cards, and getting-started guidance.
+     - **Components** (`/app/components`) — `src/pages/ComponentsPage.jsx`: educational component library showcasing buttons, inputs, panels, cards, and modal dialogs.
+   - Top-right controls: Student Mode indicator and a quick link back to Home.
+
+> **Tip for Students:** The `src/pages/ComponentsPage.jsx` is an educational UI kit. Once students are comfortable with the components, they can safely delete this page and remove its route from `src/App.jsx` and `src/layouts/AppLayout.jsx`.
 
 ---
 
@@ -22,7 +43,7 @@ Repository: [tlf-org/react-vite-project-scaffold](https://github.com/tlf-org/rea
 The scaffold includes the following components in `src/components/ui/`:
 
 - **`Button`** — Flexible button with variants (`default`, `outline`, `secondary`, `ghost`, `destructive`, `link`).
-- **`Input`** — Styled input field supporting all standard HTML input types.
+- **`Input`** — Styled input field supporting standard HTML input attributes.
 - **`Panel`** — Container panel with header, title, description, content, and footer.
 - **`Dialog`** — Accessible modal dialog window with trigger, backdrop overlay, header, and footer.
 - **`Card`** — Versatile card layout component.
@@ -93,9 +114,16 @@ npm run lint
 │   ├── assets/             # SVG icons & imagery
 │   ├── components/
 │   │   └── ui/             # shadcn/ui components (Button, Input, Panel, Dialog, Card)
+│   ├── layouts/
+│   │   ├── PublicLayout.jsx# Landing page shell (Navbar with "Open App" button)
+│   │   └── AppLayout.jsx   # Dashboard shell (Top navigation: Dashboard & Components)
+│   ├── pages/
+│   │   ├── LandingPage.jsx   # Public landing page with Hello World panel
+│   │   ├── DashboardPage.jsx # App overview with stats & getting-started guides
+│   │   └── ComponentsPage.jsx# Interactive UI kit showcase (easy to edit/remove)
 │   ├── lib/
 │   │   └── utils.js        # cn utility for className merging
-│   ├── App.jsx             # Main demo application
+│   ├── App.jsx             # Client router & layout routing
 │   ├── index.css           # Tailwind v4 imports, theme variables & design tokens
 │   └── main.jsx            # Application entry point
 ├── components.json         # shadcn configuration

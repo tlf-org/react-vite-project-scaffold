@@ -1,150 +1,29 @@
-import * as React from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import {
-  Panel,
-  PanelHeader,
-  PanelTitle,
-  PanelDescription,
-  PanelContent,
-  PanelFooter,
-} from "@/components/ui/panel"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import reactLogo from "./assets/react.svg"
-import viteLogo from "./assets/vite.svg"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import PublicLayout from "@/layouts/PublicLayout"
+import AppLayout from "@/layouts/AppLayout"
+import LandingPage from "@/pages/LandingPage"
+import DashboardPage from "@/pages/DashboardPage"
+import ComponentsPage from "@/pages/ComponentsPage"
 
 export default function App() {
-  const [name, setName] = React.useState("")
-  const [submittedName, setSubmittedName] = React.useState("")
-  const [isDialogOpen, setIsDialogOpen] = React.useState(false)
-
-  const handleSave = (e) => {
-    e.preventDefault()
-    if (name.trim()) {
-      setSubmittedName(name.trim())
-    }
-  }
-
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-4 sm:p-6">
-      <main className="w-full max-w-xl flex flex-col gap-6">
-        <div className="text-center flex flex-col items-center gap-3">
-          <div className="flex items-center justify-center gap-4">
-            <a
-              href="https://vite.dev"
-              target="_blank"
-              rel="noreferrer"
-              className="transition-transform hover:scale-110"
-            >
-              <img src={viteLogo} className="h-10 w-10" alt="Vite logo" />
-            </a>
-            <span className="text-xl text-muted-foreground font-light">+</span>
-            <a
-              href="https://react.dev"
-              target="_blank"
-              rel="noreferrer"
-              className="transition-transform hover:scale-110"
-            >
-              <img
-                src={reactLogo}
-                className="h-10 w-10 animate-spin [animation-duration:12s]"
-                alt="React logo"
-              />
-            </a>
-          </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Public Marketing / Landing Layout */}
+        <Route path="/" element={<PublicLayout />}>
+          <Route index element={<LandingPage />} />
+        </Route>
 
-          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
-            shadcn/ui + Tailwind v4 + React 19
-          </div>
+        {/* Application Dashboard Layout */}
+        <Route path="/app" element={<AppLayout />}>
+          <Route index element={<Navigate to="/app/dashboard" replace />} />
+          <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="components" element={<ComponentsPage />} />
+        </Route>
 
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
-            React + Vite + shadcn
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Scaffold with official shadcn components, Vite, and Tailwind CSS.
-          </p>
-        </div>
-
-        <Panel>
-          <PanelHeader>
-            <PanelTitle>Panel Component</PanelTitle>
-            <PanelDescription>
-              Container component styled with shadcn design tokens.
-            </PanelDescription>
-          </PanelHeader>
-
-          <PanelContent className="space-y-4">
-            <div className="rounded-lg border border-dashed border-border p-4 text-center bg-muted/30">
-              <span className="text-xl font-semibold tracking-wide text-primary">
-                Hello World
-              </span>
-              {submittedName && (
-                <p className="text-xs text-muted-foreground mt-1">
-                  Welcome, <strong className="text-foreground">{submittedName}</strong>!
-                </p>
-              )}
-            </div>
-
-            <form onSubmit={handleSave} className="flex gap-2">
-              <Input
-                type="text"
-                placeholder="Type your name..."
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="flex-1"
-              />
-              <Button type="submit" variant="default">
-                Update
-              </Button>
-            </form>
-          </PanelContent>
-
-          <PanelFooter className="flex justify-between items-center">
-            <span className="text-xs text-muted-foreground">
-              Built with shadcn primitives
-            </span>
-
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button variant="outline">
-                  Open Dialog
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Dialog Modal</DialogTitle>
-                  <DialogDescription>
-                    This is a shadcn Dialog component powered by Radix UI.
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="py-2 text-sm text-muted-foreground">
-                  Hello World from inside the dialog window! You can easily place forms, confirmations, or details here.
-                </div>
-                <DialogFooter showCloseButton>
-                  <Button onClick={() => setIsDialogOpen(false)}>
-                    Got it
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-          </PanelFooter>
-        </Panel>
-
-        <footer className="text-center text-xs text-muted-foreground">
-          Ready for more shadcn components:{" "}
-          <code className="bg-muted px-1.5 py-0.5 rounded text-foreground font-mono">
-            npx shadcn add &lt;component&gt;
-          </code>
-        </footer>
-      </main>
-    </div>
+        {/* Fallback redirect */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

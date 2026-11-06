@@ -2,14 +2,15 @@ import * as React from "react"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Badge } from "@/components/ui/badge"
 import {
-  Panel,
-  PanelHeader,
-  PanelTitle,
-  PanelDescription,
-  PanelContent,
-  PanelFooter,
-} from "@/components/ui/panel"
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card"
 import {
   Dialog,
   DialogContent,
@@ -62,9 +63,9 @@ export default function LandingPage() {
           </a>
         </div>
 
-        <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+        <Badge variant="secondary">
           shadcn/ui + Tailwind v4 + React 19
-        </div>
+        </Badge>
 
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
           React + Vite + shadcn
@@ -74,15 +75,15 @@ export default function LandingPage() {
         </p>
       </div>
 
-      <Panel>
-        <PanelHeader>
-          <PanelTitle>Panel Component</PanelTitle>
-          <PanelDescription>
-            Container component styled with shadcn design tokens.
-          </PanelDescription>
-        </PanelHeader>
+      <Card>
+        <CardHeader>
+          <CardTitle>Welcome Panel</CardTitle>
+          <CardDescription>
+            Container card styled with shadcn design tokens.
+          </CardDescription>
+        </CardHeader>
 
-        <PanelContent className="space-y-4">
+        <CardContent className="space-y-4">
           <div className="rounded-lg border border-dashed border-border p-4 text-center bg-muted/30">
             <span className="text-xl font-semibold tracking-wide text-primary">
               Hello World
@@ -106,9 +107,9 @@ export default function LandingPage() {
               Update
             </Button>
           </form>
-        </PanelContent>
+        </CardContent>
 
-        <PanelFooter className="flex flex-wrap justify-between items-center gap-2">
+        <CardFooter className="flex flex-wrap justify-between items-center gap-2">
           <span className="text-xs text-muted-foreground">
             Built with shadcn primitives
           </span>
@@ -145,8 +146,8 @@ export default function LandingPage() {
               </Link>
             </Button>
           </div>
-        </PanelFooter>
-      </Panel>
+        </CardFooter>
+      </Card>
 
       <footer className="text-center text-xs text-muted-foreground">
         Ready for more shadcn components:{" "}

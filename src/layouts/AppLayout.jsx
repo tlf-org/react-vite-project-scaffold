@@ -43,11 +43,6 @@ export default function AppLayout() {
 
           {/* Right Controls */}
           <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground border border-border">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              Student Mode
-            </div>
-
             <Button asChild variant="ghost" size="sm" className="gap-1.5 text-muted-foreground hover:text-foreground">
               <Link to="/">
                 <LogOut className="h-4 w-4" />

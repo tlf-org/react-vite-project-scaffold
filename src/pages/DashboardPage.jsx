@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Panel, PanelHeader, PanelTitle, PanelDescription, PanelContent } from "@/components/ui/panel"
 import {
   Activity,
   ArrowRight,
-  BookOpen,
   CheckCircle2,
   Code2,
   Layers,
-  Sparkles,
 } from "lucide-react"
 
 export default function DashboardPage() {
@@ -17,7 +14,7 @@ export default function DashboardPage() {
     {
       title: "UI Components",
       value: "5 Ready",
-      description: "Button, Input, Panel, Dialog, Card",
+      description: "Button, Input, Badge, Dialog, Card",
       icon: Layers,
     },
     {
@@ -25,12 +22,6 @@ export default function DashboardPage() {
       value: "Vite + React 19",
       description: "Tailwind CSS v4 engine active",
       icon: Code2,
-    },
-    {
-      title: "Learning Status",
-      value: "In Progress",
-      description: "Educational template ready to edit",
-      icon: BookOpen,
     },
     {
       title: "System Health",
@@ -45,12 +36,8 @@ export default function DashboardPage() {
       {/* Welcome Banner */}
       <div className="rounded-2xl border border-border bg-gradient-to-r from-primary/10 via-card to-card p-6 sm:p-8">
         <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary text-primary-foreground">
-            <Sparkles className="h-3 w-3" />
-            Student Workspace
-          </div>
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
-            Welcome to the App Dashboard
+            Welcome to App Dashboard
           </h1>
           <p className="text-muted-foreground text-sm sm:text-base">
             This is your workspace template. You can customize the layout, connect real APIs, or add new modules using shadcn components.
@@ -71,8 +58,8 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Stats Grid - 3 cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {stats.map((stat) => {
           const Icon = stat.icon
           return (
@@ -96,70 +83,48 @@ export default function DashboardPage() {
         })}
       </div>
 
-      {/* Educational Guidance Panel */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Panel className="lg:col-span-2">
-          <PanelHeader>
-            <PanelTitle>Getting Started with Your Project</PanelTitle>
-            <PanelDescription>
-              A few recommended next steps for your curriculum project
-            </PanelDescription>
-          </PanelHeader>
-          <PanelContent className="space-y-4">
-            <div className="space-y-3">
-              <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/40 border border-border">
-                <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-sm font-medium">Explore the Components tab</h4>
-                  <p className="text-xs text-muted-foreground mt-0.5">
-                    Check out all pre-installed UI controls in the top navigation. Once you understand them, feel free to adapt or delete them.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/40 border border-border">
-                <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-sm font-medium">Add New Pages in src/pages</h4>
-                  <p className="text-xs text-muted-foreground mt-0.5">
-                    Create new views (e.g. Profile, Settings, Products) and link them in AppLayout navigation.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/40 border border-border">
-                <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-sm font-medium">Install additional shadcn elements</h4>
-                  <p className="text-xs text-muted-foreground mt-0.5">
-                    Run <code className="font-mono text-primary">npx shadcn add dropdown-menu</code> or any other component whenever needed.
-                  </p>
-                </div>
+      {/* Getting Started Card */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Getting Started with Your Project</CardTitle>
+          <CardDescription>
+            A few recommended next steps for your curriculum project
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="flex items-start gap-3 p-3.5 rounded-lg bg-muted/40 border border-border">
+              <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-medium">Explore Components tab</h4>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Check out pre-installed UI controls in the top navigation. Once you understand them, feel free to adapt or delete them.
+                </p>
               </div>
             </div>
-          </PanelContent>
-        </Panel>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Architecture Note</CardTitle>
-            <CardDescription>
-              Two-layout clean setup
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-xs text-muted-foreground">
-            <p>
-              <strong>PublicLayout</strong> handles the marketing/landing page at <code className="text-foreground">/</code>.
-            </p>
-            <p>
-              <strong>AppLayout</strong> provides the authenticated dashboard experience at <code className="text-foreground">/app/*</code>.
-            </p>
-            <div className="pt-2 border-t border-border">
-              <span className="font-semibold text-foreground">Tip:</span> This mimics production architecture while remaining simple and straightforward for learners.
+            <div className="flex items-start gap-3 p-3.5 rounded-lg bg-muted/40 border border-border">
+              <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-medium">Add New Pages</h4>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Create new views in <code>src/pages</code> and link them in the top navigation bar.
+                </p>
+              </div>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+
+            <div className="flex items-start gap-3 p-3.5 rounded-lg bg-muted/40 border border-border">
+              <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-medium">Install shadcn elements</h4>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Run <code className="font-mono text-primary">npx shadcn add &lt;component&gt;</code> whenever new primitives are needed.
+                </p>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }

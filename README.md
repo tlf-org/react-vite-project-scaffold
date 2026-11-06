@@ -25,16 +25,16 @@ The project is structured with two decoupled layouts mimicking real-world produc
 1. **Public Layout (`/`)** — `src/layouts/PublicLayout.jsx`:
    - Designed for marketing, landing pages, and showcases.
    - Includes a public header with an **"Open App"** action button in the top-right corner.
-   - Hosts `src/pages/LandingPage.jsx` with the interactive "Hello World" Panel, name update form, and modal dialog.
+   - Hosts `src/pages/LandingPage.jsx` with the interactive "Hello World" card, name update form, and modal dialog.
 
 2. **App Layout (`/app/*`)** — `src/layouts/AppLayout.jsx`:
    - Designed for internal workspace and dashboard views.
    - Top navigation bar featuring active links:
-     - **Dashboard** (`/app/dashboard`) — `src/pages/DashboardPage.jsx`: metrics, overview cards, and getting-started guidance.
-     - **Components** (`/app/components`) — `src/pages/ComponentsPage.jsx`: educational component library showcasing buttons, inputs, panels, cards, and modal dialogs.
-   - Top-right controls: Student Mode indicator and a quick link back to Home.
+     - **Dashboard** (`/app/dashboard`) — `src/pages/DashboardPage.jsx`: overview with metrics and getting-started guidance.
+     - **Components** (`/app/components`) — `src/pages/ComponentsPage.jsx`: educational 2-column component library showcasing buttons, badges, inputs, cards, and modal dialogs.
+   - Top-right controls: quick link back to Home.
 
-> **Tip for Students:** The `src/pages/ComponentsPage.jsx` is an educational UI kit. Once students are comfortable with the components, they can safely delete this page and remove its route from `src/App.jsx` and `src/layouts/AppLayout.jsx`.
+> **Tip for Students:** `src/pages/ComponentsPage.jsx` is an educational UI kit. Once students are comfortable with the components, they can safely delete this page and remove its route from `src/App.jsx` and `src/layouts/AppLayout.jsx`.
 
 ---
 
@@ -43,10 +43,10 @@ The project is structured with two decoupled layouts mimicking real-world produc
 The scaffold includes the following components in `src/components/ui/`:
 
 - **`Button`** — Flexible button with variants (`default`, `outline`, `secondary`, `ghost`, `destructive`, `link`).
+- **`Badge`** — Visual status labels and tags with variants (`default`, `secondary`, `outline`, `destructive`, `ghost`).
 - **`Input`** — Styled input field supporting standard HTML input attributes.
-- **`Panel`** — Container panel with header, title, description, content, and footer.
+- **`Card`** — Versatile container with header, title, description, content, and footer.
 - **`Dialog`** — Accessible modal dialog window with trigger, backdrop overlay, header, and footer.
-- **`Card`** — Versatile card layout component.
 
 ---
 
@@ -113,14 +113,14 @@ npm run lint
 ├── src/
 │   ├── assets/             # SVG icons & imagery
 │   ├── components/
-│   │   └── ui/             # shadcn/ui components (Button, Input, Panel, Dialog, Card)
+│   │   └── ui/             # shadcn/ui components (Button, Badge, Input, Card, Dialog)
 │   ├── layouts/
 │   │   ├── PublicLayout.jsx# Landing page shell (Navbar with "Open App" button)
 │   │   └── AppLayout.jsx   # Dashboard shell (Top navigation: Dashboard & Components)
 │   ├── pages/
-│   │   ├── LandingPage.jsx   # Public landing page with Hello World panel
+│   │   ├── LandingPage.jsx   # Public landing page with Hello World card
 │   │   ├── DashboardPage.jsx # App overview with stats & getting-started guides
-│   │   └── ComponentsPage.jsx# Interactive UI kit showcase (easy to edit/remove)
+│   │   └── ComponentsPage.jsx# Interactive UI kit showcase (2-column grid)
 │   ├── lib/
 │   │   └── utils.js        # cn utility for className merging
 │   ├── App.jsx             # Client router & layout routing

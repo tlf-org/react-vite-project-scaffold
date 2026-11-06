@@ -13,6 +13,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { AlertCircle, Code, Image as ImageIcon, Info, Layers, Sparkles } from "lucide-react"
+import AssistantChat from "@/components/assistant-ui/AssistantChat"
 
 export default function ComponentsPage() {
   const [inputText, setInputText] = React.useState("")
@@ -249,6 +250,23 @@ export default function ComponentsPage() {
             <span>Add more shadcn primitives: <code>npx shadcn add &lt;name&gt;</code></span>
           </CardFooter>
         </Card>
+      </div>
+
+      {/* 7. Assistant UI Showcase - Full Width */}
+      <div className="space-y-3 pt-6 border-t border-border">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <h2 className="text-xl font-bold tracking-tight">AI Assistant (assistant-ui)</h2>
+            <Badge variant="secondary" className="text-xs">
+              Full-width Showcase
+            </Badge>
+          </div>
+          <p className="text-xs sm:text-sm text-muted-foreground">
+            Production-grade conversational AI component configured with simulated local runtime, file and image attachments, and multimodal image output.
+          </p>
+        </div>
+
+        <AssistantChat />
       </div>
     </div>
   )

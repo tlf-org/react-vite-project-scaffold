@@ -1,6 +1,6 @@
 # React + Vite + Tailwind CSS + shadcn/ui Project Scaffold
 
-A modern, fast, and production-ready project scaffold configured with **React 19**, **Vite**, **Tailwind CSS v4**, **shadcn/ui**, and **React Router**.
+A modern, fast, and production-ready project scaffold configured with **React 19**, **Vite**, **Tailwind CSS v4**, **shadcn/ui**, **React Router**, and **assistant-ui**.
 
 Repository: [tlf-org/react-vite-project-scaffold](https://github.com/tlf-org/react-vite-project-scaffold)
 
@@ -13,6 +13,7 @@ Repository: [tlf-org/react-vite-project-scaffold](https://github.com/tlf-org/rea
 - **[React Router DOM](https://reactrouter.com/)** — Declarative client-side routing and nested layouts.
 - **[Tailwind CSS v4](https://tailwindcss.com/)** — Modern utility-first CSS framework configured via `@tailwindcss/vite`.
 - **[shadcn/ui](https://ui.shadcn.com/)** — Reusable, accessible UI components built on Radix UI and styled with Tailwind CSS.
+- **[assistant-ui](https://www.assistant-ui.com/)** — Production-grade AI chat primitives (`@assistant-ui/react`, `@assistant-ui/react-markdown`).
 - **[Lucide React](https://lucide.dev/)** — Beautiful, consistent icons.
 - **[ESLint](https://eslint.org/)** — Flat config linting for React hooks and refresh conventions.
 
@@ -31,10 +32,21 @@ The project is structured with two decoupled layouts mimicking real-world produc
    - Designed for internal workspace and dashboard views.
    - Top navigation bar featuring the project logo and active links:
      - **Dashboard** (`/app/dashboard`) — `src/pages/DashboardPage.jsx`: overview featuring the workspace banner (`public/images/workspace-banner.svg`), metric cards, and getting-started guidance.
-     - **Components** (`/app/components`) — `src/pages/ComponentsPage.jsx`: educational 2-column component library showcasing buttons, badges, inputs, cards, dialogs, and asset handling.
+     - **Components** (`/app/components`) — `src/pages/ComponentsPage.jsx`: educational 2-column component library showcasing buttons, badges, inputs, cards, dialogs, and a full-width **assistant-ui** chat showcase at the bottom.
    - Top-right controls: quick link back to Home.
 
 > **Tip for Students:** `src/pages/ComponentsPage.jsx` is an educational UI kit. Once students are comfortable with the components, they can safely delete this page and remove its route from `src/App.jsx` and `src/layouts/AppLayout.jsx`.
+
+---
+
+## AI Assistant (`assistant-ui`) Showcase
+
+The project includes an interactive full-width AI Assistant sample located at the bottom of the **Components** page (`src/components/assistant-ui/AssistantChat.jsx`):
+
+- **Multimodal File Attachments:** Users can attach images and documents using the paperclip button or drag-and-drop. In-composer previews and message attachments are fully supported.
+- **Multimodal Outputs:** The assistant outputs structured markdown, code blocks, and rich images (e.g. `![System Architecture](/images/workspace-banner.svg)`).
+- **Simulated Local Runtime:** Powered by `useLocalRuntime`, allowing students to test streaming responses, attachment handling, and quick prompt suggestions without requiring any API keys or backend servers.
+- **Connecting a Real LLM:** When ready for production, simply replace the local model adapter with `@assistant-ui/ai-sdk` (`useChatRuntime`) or LangGraph.
 
 ---
 
@@ -151,6 +163,8 @@ npm run lint
 │   │   ├── react.svg             # React logo
 │   │   └── vite.svg              # Vite logo
 │   ├── components/
+│   │   ├── assistant-ui/   # AI chat component with simulated local runtime
+│   │   │   └── AssistantChat.jsx
 │   │   └── ui/             # shadcn/ui components (Button, Badge, Input, Card, Dialog)
 │   ├── layouts/
 │   │   ├── PublicLayout.jsx# Landing page shell (Navbar with logo & "Open App" button)
@@ -158,7 +172,7 @@ npm run lint
 │   ├── pages/
 │   │   ├── LandingPage.jsx   # Public landing page with hero graphic & Hello World card
 │   │   ├── DashboardPage.jsx # App overview with workspace banner & metric cards
-│   │   └── ComponentsPage.jsx# Interactive UI kit showcase (2-column grid)
+│   │   └── ComponentsPage.jsx# Interactive UI kit showcase (2-column grid + Assistant UI)
 │   ├── lib/
 │   │   └── utils.js        # cn utility for className merging
 │   ├── App.jsx             # Client router & layout routing

@@ -12,7 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { AlertCircle, Code, Info, Layers, PlusCircle, Sparkles } from "lucide-react"
+import { AlertCircle, Code, Image as ImageIcon, Info, Layers, Sparkles } from "lucide-react"
 
 export default function ComponentsPage() {
   const [inputText, setInputText] = React.useState("")
@@ -220,26 +220,34 @@ export default function ComponentsPage() {
           </CardFooter>
         </Card>
 
-        {/* 6. Extensibility Section */}
+        {/* 6. Assets & Extensibility */}
         <Card className="border-dashed bg-muted/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base">
-              <PlusCircle className="h-4 w-4 text-primary" />
-              Add More Components
+              <ImageIcon className="h-4 w-4 text-primary" />
+              Assets & Images in Vite
             </CardTitle>
             <CardDescription className="text-xs">
-              Extend the library anytime using the official CLI.
+              Two official ways to store and reference images.
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-2 text-xs text-muted-foreground">
-            <p>To add any component to your project:</p>
-            <code className="block bg-muted px-2.5 py-1.5 rounded text-foreground font-mono text-xs">
-              npx shadcn add dropdown-menu
-            </code>
-            <p className="text-[11px] text-muted-foreground pt-1">
-              Popular components: <code>tabs</code>, <code>sheet</code>, <code>avatar</code>, <code>separator</code>.
-            </p>
+          <CardContent className="space-y-3 text-xs text-muted-foreground">
+            <div>
+              <span className="font-semibold text-foreground">1. Bundled (src/assets/)</span>
+              <p className="mt-0.5">
+                Imported in JS: <code className="text-foreground">import logo from "@/assets/logo.svg"</code>. Hashed and optimized by Vite.
+              </p>
+            </div>
+            <div className="pt-2 border-t border-border">
+              <span className="font-semibold text-foreground">2. Public (public/images/)</span>
+              <p className="mt-0.5">
+                Direct URL: <code className="text-foreground">&lt;img src="/images/workspace-banner.svg" /&gt;</code>. Served directly without bundling.
+              </p>
+            </div>
           </CardContent>
+          <CardFooter className="pt-2 border-t border-border text-[11px] text-muted-foreground">
+            <span>Add more shadcn primitives: <code>npx shadcn add &lt;name&gt;</code></span>
+          </CardFooter>
         </Card>
       </div>
     </div>

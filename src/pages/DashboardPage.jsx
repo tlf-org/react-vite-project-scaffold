@@ -34,8 +34,8 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8">
       {/* Welcome Banner */}
-      <div className="rounded-2xl border border-border bg-gradient-to-r from-primary/10 via-card to-card p-6 sm:p-8">
-        <div className="max-w-2xl space-y-3">
+      <div className="rounded-2xl border border-border bg-gradient-to-r from-primary/10 via-card to-card p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden">
+        <div className="max-w-xl space-y-3">
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
             Welcome to App Dashboard
           </h1>
@@ -55,6 +55,15 @@ export default function DashboardPage() {
               </Link>
             </Button>
           </div>
+        </div>
+
+        {/* Workspace Preview Image (loaded directly from public/images/) */}
+        <div className="w-full md:w-auto shrink-0 flex justify-center">
+          <img
+            src="/images/workspace-banner.svg"
+            alt="Workspace Overview"
+            className="w-full max-w-xs sm:max-w-sm rounded-xl border border-border/60 shadow-md"
+          />
         </div>
       </div>
 

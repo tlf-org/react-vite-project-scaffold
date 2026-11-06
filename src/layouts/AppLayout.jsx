@@ -1,6 +1,7 @@
 import { Link, NavLink, Outlet } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { LayoutDashboard, Layers, LogOut, Sparkles } from "lucide-react"
+import { LayoutDashboard, Layers, LogOut } from "lucide-react"
+import logo from "@/assets/logo.svg"
 
 export default function AppLayout() {
   const navLinkClass = ({ isActive }) =>
@@ -21,9 +22,7 @@ export default function AppLayout() {
               to="/app/dashboard"
               className="flex items-center gap-2.5 font-bold tracking-tight text-lg hover:opacity-90 transition-opacity"
             >
-              <div className="h-8 w-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center shadow-sm">
-                <Sparkles className="h-4 w-4" />
-              </div>
+              <img src={logo} alt="Workspace Logo" className="h-8 w-8 rounded-lg shadow-sm" />
               <span className="hidden sm:inline">Workspace</span>
             </Link>
 

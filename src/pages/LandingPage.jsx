@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/dialog"
 import reactLogo from "@/assets/react.svg"
 import viteLogo from "@/assets/vite.svg"
+import heroIllustration from "@/assets/hero-illustration.svg"
 import { ArrowRight } from "lucide-react"
 
 export default function LandingPage() {
@@ -73,6 +74,15 @@ export default function LandingPage() {
         <p className="text-sm text-muted-foreground">
           Official recommended modern scaffold with Vite, React 19, and Tailwind CSS.
         </p>
+      </div>
+
+      {/* Hero Illustration from src/assets/ */}
+      <div className="overflow-hidden rounded-xl border border-border bg-card/60 shadow-sm p-2">
+        <img
+          src={heroIllustration}
+          alt="Developer Project Scaffold"
+          className="w-full h-auto rounded-lg object-cover"
+        />
       </div>
 
       <Card>

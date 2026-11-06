@@ -24,17 +24,47 @@ The project is structured with two decoupled layouts mimicking real-world produc
 
 1. **Public Layout (`/`)** — `src/layouts/PublicLayout.jsx`:
    - Designed for marketing, landing pages, and showcases.
-   - Includes a public header with an **"Open App"** action button in the top-right corner.
-   - Hosts `src/pages/LandingPage.jsx` with the interactive "Hello World" card, name update form, and modal dialog.
+   - Features the project logo (`src/assets/logo.svg`) and an **"Open App"** action button in the top-right corner.
+   - Hosts `src/pages/LandingPage.jsx` with the hero illustration (`src/assets/hero-illustration.svg`), an interactive "Hello World" card, a name update form, and a modal dialog.
 
 2. **App Layout (`/app/*`)** — `src/layouts/AppLayout.jsx`:
    - Designed for internal workspace and dashboard views.
-   - Top navigation bar featuring active links:
-     - **Dashboard** (`/app/dashboard`) — `src/pages/DashboardPage.jsx`: overview with metrics and getting-started guidance.
-     - **Components** (`/app/components`) — `src/pages/ComponentsPage.jsx`: educational 2-column component library showcasing buttons, badges, inputs, cards, and modal dialogs.
+   - Top navigation bar featuring the project logo and active links:
+     - **Dashboard** (`/app/dashboard`) — `src/pages/DashboardPage.jsx`: overview featuring the workspace banner (`public/images/workspace-banner.svg`), metric cards, and getting-started guidance.
+     - **Components** (`/app/components`) — `src/pages/ComponentsPage.jsx`: educational 2-column component library showcasing buttons, badges, inputs, cards, dialogs, and asset handling.
    - Top-right controls: quick link back to Home.
 
 > **Tip for Students:** `src/pages/ComponentsPage.jsx` is an educational UI kit. Once students are comfortable with the components, they can safely delete this page and remove its route from `src/App.jsx` and `src/layouts/AppLayout.jsx`.
+
+---
+
+## Images & Asset Handling in Vite
+
+This project demonstrates both official Vite approaches for storing and loading images:
+
+### 1. Bundled Assets (`src/assets/`) — Recommended for UI & Components
+- **How it works:** Imported in JavaScript/JSX:
+  ```jsx
+  import logo from "@/assets/logo.svg"
+  import heroIllustration from "@/assets/hero-illustration.svg"
+
+  <img src={logo} alt="Logo" className="h-8 w-8" />
+  ```
+- **Benefits:**
+  - Files are processed, optimized, and hashed by Vite for cache-busting during `npm run build`.
+  - Compile-time checking prevents broken links if a file is renamed or moved.
+  - Small SVGs and images can be automatically inlined as data URIs.
+- **Used in this project for:** Brand logo (`logo.svg`), landing hero graphic (`hero-illustration.svg`), and framework icons (`react.svg`, `vite.svg`).
+
+### 2. Static Public Assets (`public/`) — For Unprocessed & Dynamic Files
+- **How it works:** Placed in the `public/` directory and referenced via absolute root-relative URLs:
+  ```jsx
+  <img src="/images/workspace-banner.svg" alt="Workspace Overview" />
+  ```
+- **Benefits:**
+  - Served directly as static files without bundling or filename hashing.
+  - Useful for favicons, `robots.txt`, OpenGraph preview images, or dynamically referenced files.
+- **Used in this project for:** Favicons (`favicon.svg`) and the workspace banner graphic (`/images/workspace-banner.svg`).
 
 ---
 
@@ -109,17 +139,25 @@ npm run lint
 ## Project Structure
 
 ```
-├── public/                 # Static assets (favicons, icons)
+├── public/                 # Static assets (unbundled, served directly)
+│   ├── favicon.svg         # Browser tab icon
+│   ├── icons.svg           # Global SVG sprite
+│   └── images/
+│       └── workspace-banner.svg  # Workspace illustration
 ├── src/
-│   ├── assets/             # SVG icons & imagery
+│   ├── assets/             # Bundled assets (imported in code, hashed on build)
+│   │   ├── hero-illustration.svg # Landing page hero graphic
+│   │   ├── logo.svg              # Brand vector logo
+│   │   ├── react.svg             # React logo
+│   │   └── vite.svg              # Vite logo
 │   ├── components/
 │   │   └── ui/             # shadcn/ui components (Button, Badge, Input, Card, Dialog)
 │   ├── layouts/
-│   │   ├── PublicLayout.jsx# Landing page shell (Navbar with "Open App" button)
-│   │   └── AppLayout.jsx   # Dashboard shell (Top navigation: Dashboard & Components)
+│   │   ├── PublicLayout.jsx# Landing page shell (Navbar with logo & "Open App" button)
+│   │   └── AppLayout.jsx   # Dashboard shell (Navbar with logo, Dashboard & Components tabs)
 │   ├── pages/
-│   │   ├── LandingPage.jsx   # Public landing page with Hello World card
-│   │   ├── DashboardPage.jsx # App overview with stats & getting-started guides
+│   │   ├── LandingPage.jsx   # Public landing page with hero graphic & Hello World card
+│   │   ├── DashboardPage.jsx # App overview with workspace banner & metric cards
 │   │   └── ComponentsPage.jsx# Interactive UI kit showcase (2-column grid)
 │   ├── lib/
 │   │   └── utils.js        # cn utility for className merging

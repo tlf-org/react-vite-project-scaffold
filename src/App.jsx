@@ -1,85 +1,148 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import * as React from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import {
+  Panel,
+  PanelHeader,
+  PanelTitle,
+  PanelDescription,
+  PanelContent,
+  PanelFooter,
+} from "@/components/ui/panel"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import reactLogo from "./assets/react.svg"
+import viteLogo from "./assets/vite.svg"
 
 export default function App() {
-  const [count, setCount] = useState(0)
+  const [name, setName] = React.useState("")
+  const [submittedName, setSubmittedName] = React.useState("")
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false)
+
+  const handleSave = (e) => {
+    e.preventDefault()
+    if (name.trim()) {
+      setSubmittedName(name.trim())
+    }
+  }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-center p-6 selection:bg-indigo-500 selection:text-white">
-      <main className="w-full max-w-xl bg-slate-900/80 border border-slate-800 rounded-2xl p-8 shadow-2xl backdrop-blur-sm text-center">
-        <div className="flex items-center justify-center gap-6 mb-6">
-          <a
-            href="https://vite.dev"
-            target="_blank"
-            rel="noreferrer"
-            className="transition-transform hover:scale-110"
-          >
-            <img src={viteLogo} className="h-16 w-16" alt="Vite logo" />
-          </a>
-          <span className="text-2xl text-slate-600 font-light">+</span>
-          <a
-            href="https://react.dev"
-            target="_blank"
-            rel="noreferrer"
-            className="transition-transform hover:scale-110"
-          >
-            <img src={reactLogo} className="h-16 w-16 animate-spin [animation-duration:12s]" alt="React logo" />
-          </a>
-        </div>
+    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-4 sm:p-6">
+      <main className="w-full max-w-xl flex flex-col gap-6">
+        <div className="text-center flex flex-col items-center gap-3">
+          <div className="flex items-center justify-center gap-4">
+            <a
+              href="https://vite.dev"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-transform hover:scale-110"
+            >
+              <img src={viteLogo} className="h-10 w-10" alt="Vite logo" />
+            </a>
+            <span className="text-xl text-muted-foreground font-light">+</span>
+            <a
+              href="https://react.dev"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-transform hover:scale-110"
+            >
+              <img
+                src={reactLogo}
+                className="h-10 w-10 animate-spin [animation-duration:12s]"
+                alt="React logo"
+              />
+            </a>
+          </div>
 
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-4">
-          Tailwind CSS v4 Ready
-        </div>
+          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+            shadcn/ui + Tailwind v4 + React 19
+          </div>
 
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-3">
-          React + Vite + Tailwind CSS
-        </h1>
-
-        <p className="text-slate-400 text-sm sm:text-base mb-8">
-          Official recommended modern scaffold with Vite, React 19, and Tailwind CSS.
-        </p>
-
-        <div className="flex flex-col items-center gap-4 mb-8">
-          <button
-            type="button"
-            onClick={() => setCount((c) => c + 1)}
-            className="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white font-medium text-sm transition-all duration-200 shadow-lg shadow-indigo-600/30 cursor-pointer"
-          >
-            Count is {count}
-          </button>
-          <p className="text-xs text-slate-500">
-            Edit <code className="font-mono bg-slate-800 px-1.5 py-0.5 rounded text-indigo-300">src/App.jsx</code> and save to test HMR
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
+            React + Vite + shadcn
+          </h1>
+          <p className="text-sm text-muted-foreground">
+            Scaffold with official shadcn components, Vite, and Tailwind CSS.
           </p>
         </div>
 
-        <footer className="pt-6 border-t border-slate-800/80 flex flex-wrap justify-center items-center gap-4 text-xs text-slate-400">
-          <a
-            href="https://vite.dev"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-indigo-400 transition-colors"
-          >
-            Vite Docs
-          </a>
-          <span>•</span>
-          <a
-            href="https://react.dev"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-indigo-400 transition-colors"
-          >
-            React Docs
-          </a>
-          <span>•</span>
-          <a
-            href="https://tailwindcss.com"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-indigo-400 transition-colors"
-          >
-            Tailwind CSS Docs
-          </a>
+        <Panel>
+          <PanelHeader>
+            <PanelTitle>Panel Component</PanelTitle>
+            <PanelDescription>
+              Container component styled with shadcn design tokens.
+            </PanelDescription>
+          </PanelHeader>
+
+          <PanelContent className="space-y-4">
+            <div className="rounded-lg border border-dashed border-border p-4 text-center bg-muted/30">
+              <span className="text-xl font-semibold tracking-wide text-primary">
+                Hello World
+              </span>
+              {submittedName && (
+                <p className="text-xs text-muted-foreground mt-1">
+                  Welcome, <strong className="text-foreground">{submittedName}</strong>!
+                </p>
+              )}
+            </div>
+
+            <form onSubmit={handleSave} className="flex gap-2">
+              <Input
+                type="text"
+                placeholder="Type your name..."
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="flex-1"
+              />
+              <Button type="submit" variant="default">
+                Update
+              </Button>
+            </form>
+          </PanelContent>
+
+          <PanelFooter className="flex justify-between items-center">
+            <span className="text-xs text-muted-foreground">
+              Built with shadcn primitives
+            </span>
+
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button variant="outline">
+                  Open Dialog
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Dialog Modal</DialogTitle>
+                  <DialogDescription>
+                    This is a shadcn Dialog component powered by Radix UI.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="py-2 text-sm text-muted-foreground">
+                  Hello World from inside the dialog window! You can easily place forms, confirmations, or details here.
+                </div>
+                <DialogFooter showCloseButton>
+                  <Button onClick={() => setIsDialogOpen(false)}>
+                    Got it
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </PanelFooter>
+        </Panel>
+
+        <footer className="text-center text-xs text-muted-foreground">
+          Ready for more shadcn components:{" "}
+          <code className="bg-muted px-1.5 py-0.5 rounded text-foreground font-mono">
+            npx shadcn add &lt;component&gt;
+          </code>
         </footer>
       </main>
     </div>

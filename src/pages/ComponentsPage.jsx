@@ -12,7 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { AlertCircle, Code, Image as ImageIcon, Info, Layers, Sparkles } from "lucide-react"
+import { AlertCircle, Code, Info, Layers, Sparkles } from "lucide-react"
 import AssistantChat from "@/components/assistant-ui/AssistantChat"
 
 export default function ComponentsPage() {
@@ -200,7 +200,7 @@ export default function ComponentsPage() {
         </Card>
 
         {/* 5. Card Component Showcase */}
-        <Card>
+        <Card className="md:col-span-2">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base">
               <Layers className="h-4 w-4 text-primary" />
@@ -215,39 +215,9 @@ export default function ComponentsPage() {
               Cards provide a clean surface for dashboards, user profiles, metrics, and content lists.
             </p>
           </CardContent>
-          <CardFooter className="flex justify-between items-center text-xs text-muted-foreground pt-3 border-t border-border">
+          <CardFooter className="flex justify-between items-center text-xs text-muted-foreground pt-4 border-t border-border">
             <span>Card Footer Slot</span>
             <span className="font-semibold text-primary">v0.1.0</span>
-          </CardFooter>
-        </Card>
-
-        {/* 6. Assets & Extensibility */}
-        <Card className="border-dashed bg-muted/20">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-base">
-              <ImageIcon className="h-4 w-4 text-primary" />
-              Assets & Images in Vite
-            </CardTitle>
-            <CardDescription className="text-xs">
-              Two official ways to store and reference images.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-xs text-muted-foreground">
-            <div>
-              <span className="font-semibold text-foreground">1. Bundled (src/assets/)</span>
-              <p className="mt-0.5">
-                Imported in JS: <code className="text-foreground">import logo from "@/assets/logo.svg"</code>. Hashed and optimized by Vite.
-              </p>
-            </div>
-            <div className="pt-2 border-t border-border">
-              <span className="font-semibold text-foreground">2. Public (public/images/)</span>
-              <p className="mt-0.5">
-                Direct URL: <code className="text-foreground">&lt;img src="/images/workspace-banner.svg" /&gt;</code>. Served directly without bundling.
-              </p>
-            </div>
-          </CardContent>
-          <CardFooter className="pt-2 border-t border-border text-[11px] text-muted-foreground">
-            <span>Add more shadcn primitives: <code>npx shadcn add &lt;name&gt;</code></span>
           </CardFooter>
         </Card>
       </div>
